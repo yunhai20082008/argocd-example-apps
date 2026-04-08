@@ -7,7 +7,6 @@ metadata:
     higress.io/backend-protocol: "HTTP"
     higress.io/use-regex: "true"
     higress.io/rewrite-target: /$1
-    argocd.argoproj.io/ignore-health-status: "true"
 spec:
   ingressClassName: higress
   tls:
@@ -25,3 +24,7 @@ spec:
             name: guestbook-ui
             port:
               number: 80
+status:
+  loadBalancer:
+    ingress:
+    - ip: 127.0.0.1
