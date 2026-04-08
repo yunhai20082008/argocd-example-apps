@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: guestbook-ui
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    higress.io/force-ssl-redirect: "true"
+    higress.io/backend-protocol: "HTTP"
+    higress.io/use-regex: "true"
+    higress.io/rewrite-target: /$1
+spec:
+  ingressClassName: higress
+  tls:
+  - hosts:
+    - yindan.209173.xyz
+    secretName: guestbook-tls
+  rules:
+  - host: yindan.209173.xyz
+    http:
+      paths:
+      - path: /guestbook(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: guestbook-ui-svc   # 必须和你的 Service 名字一致
+            port:
+              number: 80
