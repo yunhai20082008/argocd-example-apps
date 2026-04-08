@@ -7,7 +7,7 @@ metadata:
     higress.io/backend-protocol: "HTTP"
     higress.io/use-regex: "true"
     higress.io/rewrite-target: /$1
-    argocd.argoproj.io/health-check-path: /
+    argocd.argoproj.io/ignore-health-status: "true"
 spec:
   ingressClassName: higress
   tls:
