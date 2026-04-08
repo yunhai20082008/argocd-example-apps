@@ -21,6 +21,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: guestbook-ui-svc
+            name: guestbook-ui
             port:
               number: 80
